@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import '@typeform/embed/build/css/popup.css';
-import InfiniteBezel from '@/components/InfiniteBezel';
-import GridOverlay from '@/components/GridOverlay';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -18,16 +16,14 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: 'Luxora — Integration Made Sovereign.',
-  description: 'The institutional crypto payment infrastructure. Close any deal. Settle instantly. Prosper absolutely.',
-  keywords: ['crypto payments', 'institutional payments', 'bitcoin settlement', 'enterprise crypto'],
+  description: 'Institutional command infrastructure for governed settlement, operator identity, live telemetry, and verifiable execution.',
+  keywords: ['payment command center', 'institutional settlement', 'governed payment rails', 'enterprise payment telemetry'],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <GridOverlay />
-        <InfiniteBezel />
         {children}
       </body>
     </html>

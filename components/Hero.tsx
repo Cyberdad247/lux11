@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import SpireButton from './SpireButton';
 import MaterialAnchor from './MaterialAnchor';
 
-const PILLARS = ['NO CHARGEBACKS', 'INSTANT SETTLEMENT', 'ZERO FRICTION', 'WHITE-GLOVE'] as const;
+const PILLARS = ['POLICY RAILS', 'ROUTE TELEMETRY', 'IDENTITY GATES', 'LEDGER PROOF'] as const;
 
 export default function Hero() {
   const ref       = useRef<HTMLElement>(null);
@@ -102,8 +102,8 @@ export default function Hero() {
             className="fade-up text-elder-md text-white/40 font-light max-w-lg mb-10"
             style={{ letterSpacing: '0.06em', lineHeight: 1.7, animationDelay: '0.75s' }}
           >
-            The institutional crypto payment gateway for visionary operators.
-            Close any deal. Settle instantly. Prosper absolutely.
+            Institutional command infrastructure for governed settlement,
+            operator identity, live telemetry, and verifiable execution.
           </p>
 
           {/* CTA row */}

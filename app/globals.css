@@ -1,77 +1,75 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian:      #000000;
-  --color-obsidian-lift: #080808;
+  --color-obsidian:      #010101;
+  --color-obsidian-lift: #0A0A0A;
   --color-gold:          #D4AF37;
   --color-platinum:      #E8E4D9;
-  --color-gold-dim:      rgba(212,175,55,0.12);
-  --color-smoke:         rgba(255,255,255,0.04);
-  --color-smoke-border:  rgba(255,255,255,0.07);
   --ease-fluid:          cubic-bezier(0.22,1,0.36,1);
   --ease-sovereign:      cubic-bezier(0.77,0,0.175,1);
-  --font-sans:           var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono:           var(--font-geist-mono), monospace;
+  --font-sans:           var(--font-geist-sans), 'Inter', system-ui, sans-serif;
+  --font-mono:           var(--font-geist-mono), 'Space Mono', monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-obsidian);
-  color: rgba(255,255,255,0.85);
+  background: #010101;
+  color: #fff;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* ── Elder Scale ─────────────────────────────────────────── */
-.text-elder-xl { font-size: clamp(2.5rem, 6vw + 1rem, 6rem); }
-.text-elder-lg { font-size: clamp(1.75rem, 4vw + 0.5rem, 3.5rem); }
-.text-elder-md { font-size: clamp(1.05rem, 2vw + 0.3rem, 1.35rem); }
-
-/* ── Glassmorphism 3.0 ───────────────────────────────────── */
-.glass {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* ── Scan sweep ─────────────────────────────────────────── */
+@keyframes scanLine {
+  from { left: -2px; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  to   { left: 100%; opacity: 0; }
 }
 
-.glass-3 {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.055) 0%,
-    rgba(255,255,255,0.018) 100%
-  );
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    inset 0 -1px 0 rgba(0,0,0,0.25),
-    0 16px 48px rgba(0,0,0,0.5),
-    0 1px 0 rgba(212,175,55,0.06);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
+/* ── Reveal entrances ────────────────────────────────────── */
+@keyframes revealTop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes revealLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes revealBottom {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-reveal-top    { animation: revealTop    1.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-reveal-left   { animation: revealLeft   1.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-reveal-bottom { animation: revealBottom 1.2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards; opacity: 0; }
 
-/* Infinite Bezel nav surface */
+/* ── Glassmorphism surfaces ──────────────────────────────── */
 .glass-bezel {
   background: rgba(0,0,0,0.55);
   border: 1px solid rgba(212,175,55,0.12);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 24px 64px rgba(0,0,0,0.6);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 64px rgba(0,0,0,0.6);
   backdrop-filter: blur(48px) saturate(180%);
   -webkit-backdrop-filter: blur(48px) saturate(180%);
 }
 
-/* ── Shifting Platinum light-leak ────────────────────────── */
+/* ── Ticker marquee ──────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 36s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ── Shifting Platinum leak ──────────────────────────────── */
 @keyframes platinum-flow {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
 }
-
 .platinum-leak {
   position: relative;
   isolation: isolate;
@@ -79,17 +77,9 @@ body {
 .platinum-leak::before {
   content: '';
   position: absolute;
-  inset-x: 0;
-  top: 0;
+  inset-x: 0; top: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212,175,55,0.6) 30%,
-    rgba(232,228,217,0.95) 50%,
-    rgba(212,175,55,0.6) 70%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.6) 30%, rgba(232,228,217,0.95) 50%, rgba(212,175,55,0.6) 70%, transparent 100%);
   background-size: 300% 100%;
   background-position: -200% center;
   animation: platinum-flow 5s ease-in-out infinite;
@@ -97,99 +87,5 @@ body {
   border-radius: inherit;
 }
 
-/* ── Biometric pulse (SpecularCTA) ───────────────────────── */
-@keyframes bio-pulse {
-  0%   { transform: scale(1);   opacity: 0.55; }
-  100% { transform: scale(1.9); opacity: 0; }
-}
-.bio-ring-1 {
-  animation: bio-pulse 2.2s var(--ease-fluid) infinite;
-}
-.bio-ring-2 {
-  animation: bio-pulse 2.2s var(--ease-fluid) 0.75s infinite;
-}
-
-/* ── Bugatti scan sweep ──────────────────────────────────── */
-@keyframes scan-sweep {
-  0%   { transform: translateX(-4px); opacity: 0; }
-  8%   { opacity: 1; }
-  92%  { opacity: 1; }
-  100% { transform: translateX(100vw); opacity: 0; }
-}
-.scan-sweep {
-  animation: scan-sweep 1.5s var(--ease-fluid) 1.0s both;
-}
-
-/* ── Fade-up entrance ────────────────────────────────────── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.fade-up {
-  opacity: 0;
-  animation: fade-up 0.9s var(--ease-fluid) forwards;
-}
-
-/* ── Mask-reveal H1 ──────────────────────────────────────── */
-@keyframes mask-reveal {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0%   0 0); }
-}
-.mask-reveal {
-  animation: mask-reveal 1.1s var(--ease-sovereign) forwards;
-}
-
-/* ── Gold-Bleed (Material Anchor) ────────────────────────── */
-.gold-bleed-img {
-  filter: grayscale(100%) brightness(0.8);
-  transition: filter 2000ms ease-out;
-  mix-blend-mode: screen;
-}
-.gold-bleed-group:hover .gold-bleed-img {
-  filter: grayscale(0%) brightness(1.05) saturate(1.4) sepia(0.15);
-}
-.gold-bleed-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(212,175,55,0.28);
-  mix-blend-mode: color;
-  opacity: 0;
-  transition: opacity 2000ms ease-out;
-  pointer-events: none;
-}
-.gold-bleed-group:hover .gold-bleed-overlay {
-  opacity: 1;
-}
-
-/* ── Shimmer ─────────────────────────────────────────────── */
-@keyframes shimmer {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-.shimmer { animation: shimmer 1.6s ease-in-out infinite; }
-
-/* ── Liquid Ticker marquee ───────────────────────────────── */
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee 36s linear infinite;
-  will-change: transform;
-}
-.animate-marquee:hover { animation-play-state: paused; }
-
-/* ── Command Center grid lines ───────────────────────────── */
-.grid-lines {
-  background-image:
-    linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* ── Gold pulse (ambient) ────────────────────────────────── */
-@keyframes gold-pulse {
-  0%, 100% { opacity: 0.25; }
-  50%       { opacity: 0.55; }
-}
-.glow-pulse { animation: gold-pulse 3.5s ease-in-out infinite; }
+/* ── WealthSimple easing utility ─────────────────────────── */
+.luxora-easing { transition-timing-function: cubic-bezier(0.22,1,0.36,1); }

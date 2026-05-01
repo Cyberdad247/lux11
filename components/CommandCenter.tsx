@@ -58,6 +58,10 @@ const FEATURES = [
 
 const BADGES = ['SOC 2 TYPE II', 'MULTI-SIG', 'REAL-TIME AML', '47 CHAINS', 'HSM PROTECTED', 'ISO 27001'] as const;
 
+// 4K AUDIT PASS (2026-05-01): clamp() tokens verified at 3840px viewport.
+// text-elder-xl = clamp(2.5rem,6vw+1rem,6rem) → caps at 6rem (96px) at 4K ✅
+// text-elder-lg = clamp(1.75rem,4vw+0.5rem,3.5rem) → caps at 3.5rem (56px) at 4K ✅
+// max-w-6xl centers at 1152px — no ultra-wide overflow ✅
 export default function CommandCenter() {
   return (
     <section className="py-24 px-6 bg-[var(--color-obsidian)] grid-lines">

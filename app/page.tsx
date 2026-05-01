@@ -1,10 +1,6 @@
 import { Suspense } from 'react';
-import Hero from '@/components/Hero';
-import CommandCenter from '@/components/CommandCenter';
-import SpireFooter from '@/components/SpireFooter';
-import SectionReveal from '@/components/SectionReveal';
 import RefCapture from '@/components/RefCapture';
-import LiquidTicker from '@/components/LiquidTicker';
+import SovereignPage from '@/components/SovereignPage';
 import type { TickerItem } from '@/components/LiquidTicker';
 
 const FALLBACK: TickerItem[] = [
@@ -14,6 +10,7 @@ const FALLBACK: TickerItem[] = [
   { symbol: 'USDC', price: 1, change24h: 0 },
 ];
 
+// ISR: revalidate 60s — LCP target < 1.2s, horology.png fetchPriority=high in SovereignPage
 async function getTickers(): Promise<TickerItem[]> {
   try {
     const res = await fetch(
@@ -37,18 +34,11 @@ export default async function Home() {
   const tickers = await getTickers();
 
   return (
-    <main className="bg-[var(--color-obsidian)]">
+    <main>
       <Suspense fallback={null}>
         <RefCapture />
       </Suspense>
-      <LiquidTicker tickers={tickers} />
-      <Hero />
-      <SectionReveal delay={0.04}>
-        <CommandCenter />
-      </SectionReveal>
-      <SectionReveal delay={0.04}>
-        <SpireFooter tickers={tickers} />
-      </SectionReveal>
+      <SovereignPage tickers={tickers} />
     </main>
   );
 }
