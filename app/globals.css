@@ -9,6 +9,7 @@
   --color-smoke:         rgba(255,255,255,0.04);
   --color-smoke-border:  rgba(255,255,255,0.07);
   --ease-fluid:          cubic-bezier(0.22,1,0.36,1);
+  --ease-sovereign:      cubic-bezier(0.77,0,0.175,1);
   --font-sans:           var(--font-geist-sans), system-ui, sans-serif;
   --font-mono:           var(--font-geist-mono), monospace;
 }
@@ -54,10 +55,21 @@ body {
   -webkit-backdrop-filter: blur(24px) saturate(200%);
 }
 
+/* Infinite Bezel nav surface */
+.glass-bezel {
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(212,175,55,0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 24px 64px rgba(0,0,0,0.6);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
+}
+
 /* ── Shifting Platinum light-leak ────────────────────────── */
 @keyframes platinum-flow {
   0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  100% { background-position:  200% center; }
 }
 
 .platinum-leak {
@@ -85,7 +97,19 @@ body {
   border-radius: inherit;
 }
 
-/* ── Bugatti scan sweep (fires once) ─────────────────────── */
+/* ── Biometric pulse (SpecularCTA) ───────────────────────── */
+@keyframes bio-pulse {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.bio-ring-1 {
+  animation: bio-pulse 2.2s var(--ease-fluid) infinite;
+}
+.bio-ring-2 {
+  animation: bio-pulse 2.2s var(--ease-fluid) 0.75s infinite;
+}
+
+/* ── Bugatti scan sweep ──────────────────────────────────── */
 @keyframes scan-sweep {
   0%   { transform: translateX(-4px); opacity: 0; }
   8%   { opacity: 1; }
@@ -95,13 +119,6 @@ body {
 .scan-sweep {
   animation: scan-sweep 1.5s var(--ease-fluid) 1.0s both;
 }
-
-/* ── Gold ambient pulse ──────────────────────────────────── */
-@keyframes gold-pulse {
-  0%, 100% { opacity: 0.25; }
-  50%       { opacity: 0.55; }
-}
-.glow-pulse { animation: gold-pulse 3.5s ease-in-out infinite; }
 
 /* ── Fade-up entrance ────────────────────────────────────── */
 @keyframes fade-up {
@@ -119,7 +136,29 @@ body {
   to   { clip-path: inset(0 0%   0 0); }
 }
 .mask-reveal {
-  animation: mask-reveal 1.1s cubic-bezier(0.77,0,0.175,1) forwards;
+  animation: mask-reveal 1.1s var(--ease-sovereign) forwards;
+}
+
+/* ── Gold-Bleed (Material Anchor) ────────────────────────── */
+.gold-bleed-img {
+  filter: grayscale(100%) brightness(0.8);
+  transition: filter 2000ms ease-out;
+  mix-blend-mode: screen;
+}
+.gold-bleed-group:hover .gold-bleed-img {
+  filter: grayscale(0%) brightness(1.05) saturate(1.4) sepia(0.15);
+}
+.gold-bleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(212,175,55,0.28);
+  mix-blend-mode: color;
+  opacity: 0;
+  transition: opacity 2000ms ease-out;
+  pointer-events: none;
+}
+.gold-bleed-group:hover .gold-bleed-overlay {
+  opacity: 1;
 }
 
 /* ── Shimmer ─────────────────────────────────────────────── */
@@ -148,9 +187,9 @@ body {
   background-size: 48px 48px;
 }
 
-/* ── SpireButton glow ────────────────────────────────────── */
-@keyframes spire-glow {
-  0%, 100% { box-shadow: 0 0 0  0   rgba(212,175,55,0); }
-  50%       { box-shadow: 0 0 32px 4px rgba(212,175,55,0.2); }
+/* ── Gold pulse (ambient) ────────────────────────────────── */
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 0.55; }
 }
-.glow-spire { animation: spire-glow 3s ease-in-out infinite; }
+.glow-pulse { animation: gold-pulse 3.5s ease-in-out infinite; }

@@ -7,10 +7,10 @@ import RefCapture from '@/components/RefCapture';
 import LiquidTicker from '@/components/LiquidTicker';
 import type { TickerItem } from '@/components/LiquidTicker';
 
-const TICKER_FALLBACK: TickerItem[] = [
-  { symbol: 'BTC', price: 0, change24h: 0 },
-  { symbol: 'ETH', price: 0, change24h: 0 },
-  { symbol: 'SOL', price: 0, change24h: 0 },
+const FALLBACK: TickerItem[] = [
+  { symbol: 'BTC',  price: 0, change24h: 0 },
+  { symbol: 'ETH',  price: 0, change24h: 0 },
+  { symbol: 'SOL',  price: 0, change24h: 0 },
   { symbol: 'USDC', price: 1, change24h: 0 },
 ];
 
@@ -20,7 +20,7 @@ async function getTickers(): Promise<TickerItem[]> {
       'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,usd-coin&vs_currencies=usd&include_24hr_change=true',
       { next: { revalidate: 60 } }
     );
-    if (!res.ok) return TICKER_FALLBACK;
+    if (!res.ok) return FALLBACK;
     const d = await res.json();
     return [
       { symbol: 'BTC',  price: d.bitcoin?.usd      ?? 0, change24h: d.bitcoin?.usd_24h_change      ?? 0 },
@@ -29,7 +29,7 @@ async function getTickers(): Promise<TickerItem[]> {
       { symbol: 'USDC', price: d['usd-coin']?.usd  ?? 1, change24h: d['usd-coin']?.usd_24h_change  ?? 0 },
     ];
   } catch {
-    return TICKER_FALLBACK;
+    return FALLBACK;
   }
 }
 
@@ -47,7 +47,7 @@ export default async function Home() {
         <CommandCenter />
       </SectionReveal>
       <SectionReveal delay={0.04}>
-        <SpireFooter />
+        <SpireFooter tickers={tickers} />
       </SectionReveal>
     </main>
   );

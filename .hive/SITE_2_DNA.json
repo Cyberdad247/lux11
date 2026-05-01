@@ -1,0 +1,85 @@
+{
+  "version": "2.5",
+  "codename": "SOVEREIGN_TERMINAL",
+  "architect": "SIR_BORIS v3.0",
+  "forged": "2026-05-01",
+
+  "tokens": {
+    "color": {
+      "obsidian":  "#000000",
+      "gold":      "#D4AF37",
+      "platinum":  "#E8E4D9",
+      "obsidian_lift": "#080808"
+    },
+    "easing": {
+      "fluid":     "cubic-bezier(0.22, 1, 0.36, 1)",
+      "sovereign": "cubic-bezier(0.77, 0, 0.175, 1)",
+      "gold_bleed": "2000ms ease-out"
+    },
+    "typography": {
+      "tracking_h1":     "clamp(0.2em, 2vw, 0.8em)",
+      "tracking_eyebrow": "0.45em",
+      "tracking_body":   "0.06em",
+      "scale_xl": "clamp(2.5rem, 6vw + 1rem, 6rem)",
+      "scale_lg": "clamp(1.75rem, 4vw + 0.5rem, 3.5rem)",
+      "scale_md": "clamp(1.05rem, 2vw + 0.3rem, 1.35rem)",
+      "weight":   "extralight (100–200)"
+    },
+    "grid": {
+      "columns":              12,
+      "thread_opacity_base":  0.06,
+      "thread_glow_max":      0.36,
+      "proximity_radius_px":  100,
+      "max_width":            "max-w-6xl"
+    },
+    "glassmorphism_3": {
+      "blur":            "24px",
+      "saturation":      "200%",
+      "border_opacity":  0.07,
+      "inner_highlight": "rgba(255,255,255,0.08)",
+      "depth_shadow":    "0 16px 48px rgba(0,0,0,0.5)"
+    },
+    "animations": {
+      "scan_sweep":        "1.5s cubic-bezier(0.22,1,0.36,1) 1.0s both",
+      "platinum_flow":     "5s ease-in-out infinite",
+      "bio_pulse":         "2.2s cubic-bezier(0.22,1,0.36,1) infinite",
+      "gold_bleed":        "2000ms ease-out",
+      "doherty_threshold": "400ms",
+      "marquee":           "36s linear infinite"
+    },
+    "specular_map": {
+      "intensity_base":   0.04,
+      "intensity_max":    0.13,
+      "velocity_factor":  0.07,
+      "radius":           "52%"
+    }
+  },
+
+  "components": [
+    { "name": "InfiniteBezel",   "type": "client", "lines": 78,  "role": "global floating nav" },
+    { "name": "GridOverlay",     "type": "client", "lines": 42,  "role": "12-col proximity glow grid" },
+    { "name": "Hero",            "type": "client", "lines": 120, "role": "60/40 sovereign terminal" },
+    { "name": "MaterialAnchor",  "type": "server", "lines": 52,  "role": "horology gold-bleed asset" },
+    { "name": "GlassPanel",      "type": "client", "lines": 28,  "role": "glassmorphism 3.0 surface" },
+    { "name": "CommandCenter",   "type": "client", "lines": 145, "role": "institutional bento grid" },
+    { "name": "LiquidTicker",    "type": "client", "lines": 52,  "role": "ISR live oracle marquee" },
+    { "name": "SpireButton",     "type": "client", "lines": 56,  "role": "biometric specular CTA" },
+    { "name": "SpireFooter",     "type": "server", "lines": 98,  "role": "billboard liquidity oracle" }
+  ],
+
+  "success_genes_from_site_1": [
+    "TickerBar → LiquidTicker (evolved: LIVE badge, 4-asset, emerald pulse)",
+    "GlassPanel → Glassmorphism 3.0 (evolved: blur 24px, inner highlight, depth shadow)",
+    "SectionReveal → retained (WealthSimple easing applied)",
+    "typeformPopup → SpireButton/InfiniteBezel (evolved: biometric pulse, compact mode)",
+    "RefCapture → retained (sessionStorage ref passthrough to Typeform hidden field)"
+  ],
+
+  "validation": {
+    "hex_purity":        "#D4AF37 is the only interactive color",
+    "doherty_threshold": "all hover states < 400ms (CSS transition-duration ≤ 300ms)",
+    "token_efficiency":  "largest component (CommandCenter): 145 lines < 500 line gate",
+    "context_rot":       "zero crypto-bro slang in meta, components, or copy",
+    "bundle_gate":       "160 kB First Load JS"
+  }
+}
