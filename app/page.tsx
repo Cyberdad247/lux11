@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import RefCapture from '@/components/RefCapture';
 import SovereignPage from '@/components/SovereignPage';
+import VipSection from '@/components/VipSection';
 import type { TickerItem } from '@/components/LiquidTicker';
 
 const FALLBACK: TickerItem[] = [
@@ -39,6 +40,7 @@ export default async function Home() {
         <RefCapture />
       </Suspense>
       <SovereignPage tickers={tickers} />
+      <VipSection />
     </main>
   );
 }
