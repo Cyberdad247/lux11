@@ -20,28 +20,34 @@ export default function SpireFooter({ tickers = [] }: { tickers?: TickerItem[] }
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center gap-10">
           <div>
             <p className="text-[9px] tracking-[0.5em] text-[var(--color-gold)] uppercase font-semibold mb-3">
-              Enter The Spire
+              Speak With Our Team
             </p>
             <h2
               className="text-elder-lg font-extralight text-white"
               style={{ letterSpacing: '0.5em' }}
             >
-              ENTER THE<br />
-              <span className="text-[var(--color-gold)]">SOVEREIGN</span>
+              DONT MISS THE<br />
+              <span className="text-[var(--color-gold)]">NEXT WAVE</span>
             </h2>
           </div>
 
           <p className="text-sm text-white/30 tracking-widest font-light max-w-sm">
-            One conversation. Every deal closed.
+            We assist businesses with onboarding and high-value transactions.
           </p>
 
-          <SpireButton label="INITIALIZE SYSTEM" />
+          <SpireButton label="APPLY NOW" />
 
           <a
             href="mailto:partners@luxorapayments.com"
             className="text-[10px] text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors duration-300 tracking-[0.25em]"
           >
             partners@luxorapayments.com
+          </a>
+          <a
+            href="mailto:onboarding@luxorapayments.com"
+            className="text-[10px] text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors duration-300 tracking-[0.25em]"
+          >
+            onboarding@luxorapayments.com
           </a>
         </div>
       </div>

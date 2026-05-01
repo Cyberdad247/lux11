@@ -183,16 +183,20 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
 
             {/* Right actions */}
             <div className="flex items-center gap-3">
-              <button className="hidden md:block text-[11px] font-light tracking-[0.18em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-                Identity Auth
-              </button>
+              <div className="hidden lg:flex flex-col items-end text-right">
+                <span className="text-[9px] tracking-[0.28em] uppercase text-white/35">Instant global payments</span>
+                <a href="mailto:partners@luxorapayments.com" className="text-[10px] tracking-[0.18em] text-[#D4AF37]">
+                  partners@luxorapayments.com
+                </a>
+                <span className="text-[9px] tracking-[0.24em] uppercase text-white/30">Contact : partners@luxorapayments.com</span>
+              </div>
               <button
                 onClick={openTypeform}
                 className="relative flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full text-[10px] sm:text-[11px] font-light tracking-[0.12em] sm:tracking-[0.18em] uppercase text-black transition-all duration-300 hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 50%, #D4AF37 100%)' }}
               >
-                <span className="sm:hidden">Enter</span>
-                <span className="hidden sm:inline">Enter The Spire</span>
+                <span className="sm:hidden">Apply</span>
+                <span className="hidden sm:inline">Apply Now</span>
               </button>
             </div>
           </nav>
@@ -234,8 +238,8 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
               <div className="animate-reveal-bottom border-l-2 border-[#D4AF37]/40 pl-5 mb-10">
                 <p className="font-light tracking-[0.06em] leading-relaxed text-white/70"
                   style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)' }}>
-                  Sovereign terminal infrastructure for operators who need
-                  governed settlement, identity, telemetry, and proof.
+                  We assist businesses with onboarding and high-value transactions.
+                  We can set up anyone in the world on any part of the globe. It pays to partner with Luxora.
                 </p>
               </div>
 
@@ -253,7 +257,7 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
                     size={16}
                     className="transition-transform duration-300 group-hover:rotate-90"
                   />
-                  Initialize Protocol
+                  Apply Now
                 </button>
 
                 <button className="text-[11px] font-light tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors duration-200">
@@ -368,6 +372,37 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-[5] px-4 sm:px-6 pb-16">
+          <div className="mx-auto max-w-6xl rounded-3xl border border-white/[0.08] bg-white/[0.03] p-6 sm:p-8">
+            <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+              <div className="space-y-4">
+                <p className="text-[10px] tracking-[0.45em] uppercase text-[#D4AF37]/70">Speak with our team</p>
+                <h2 className="text-2xl font-extralight uppercase tracking-[0.08em] text-white sm:text-4xl">
+                  Trusted by businesses preparing for the next crypto wave
+                </h2>
+                <p className="max-w-2xl text-sm leading-7 text-white/55">
+                  Built for high-value transactions, deal closing, secure payment processing infrastructure, and white-glove onboarding.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/[0.08] bg-black/30 p-5">
+                <p className="text-xs tracking-[0.35em] uppercase text-white/35">Contact us at</p>
+                <div className="mt-4 space-y-3 text-sm">
+                  <a href="mailto:partners@luxorapayments.com" className="block text-[#D4AF37] hover:underline">
+                    partners@luxorapayments.com
+                  </a>
+                  <a href="mailto:onboarding@luxorapayments.com" className="block text-[#D4AF37] hover:underline">
+                    onboarding@luxorapayments.com
+                  </a>
+                </div>
+                <div className="mt-6 border-t border-white/[0.08] pt-4 text-xs tracking-[0.28em] uppercase text-white/30">
+                  DONT MISS THE NEXT WAVE OF PAYMENTS
+                </div>
+              </div>
             </div>
           </div>
         </section>
