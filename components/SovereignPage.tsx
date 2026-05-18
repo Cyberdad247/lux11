@@ -190,14 +190,10 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
                 </a>
                 <span className="text-[9px] tracking-[0.24em] uppercase text-white/30">Contact : partners@luxorapayments.com</span>
               </div>
-              <button
-                onClick={openTypeform}
-                className="relative flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full text-[10px] sm:text-[11px] font-light tracking-[0.12em] sm:tracking-[0.18em] uppercase text-black transition-all duration-300 hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 50%, #D4AF37 100%)' }}
-              >
+              <a href="https://merchant.getbitflow.com/sign-upcode=BF-185C14" target="_blank" rel="noopener noreferrer" className="relative flex items-center gap-2 px-3 sm:px-5 py-2 rounded-full text-[10px] sm:text-[11px] font-light tracking-[0.12em] sm:tracking-[0.18em] uppercase text-black transition-all duration-300 hover:scale-105" style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 50%, #D4AF37 100%)' }}>
                 <span className="sm:hidden">Apply</span>
                 <span className="hidden sm:inline">Apply Now</span>
-              </button>
+              </a>
             </div>
           </nav>
         </header>
@@ -245,11 +241,7 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
 
               {/* CTA */}
               <div className="animate-reveal-bottom flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
-                <button
-                  onClick={openTypeform}
-                  className="group relative flex w-full justify-center sm:w-auto items-center gap-3 px-6 sm:px-8 py-4 rounded-full font-light tracking-[0.14em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm text-black transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]"
-                  style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 40%, #D4AF37 100%)' }}
-                >
+                <a href="https://merchant.getbitflow.com/sign-upcode=BF-185C14" target="_blank" rel="noopener noreferrer" className="group relative flex w-full justify-center sm:w-auto items-center gap-3 px-6 sm:px-8 py-4 rounded-full font-light tracking-[0.14em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm text-black transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]" style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #E8D48B 40%, #D4AF37 100%)' }}>
                   {/* Pulse ring */}
                   <span className="absolute inset-0 rounded-full animate-ping opacity-20"
                     style={{ background: 'rgba(212,175,55,0.5)', animationDuration: '2.2s' }} />
@@ -258,7 +250,7 @@ export default function SovereignPage({ tickers }: { tickers: TickerItem[] }) {
                     className="transition-transform duration-300 group-hover:rotate-90"
                   />
                   Apply Now
-                </button>
+                </a>
 
                 <button className="text-[11px] font-light tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors duration-200">
                   View Protocol →
